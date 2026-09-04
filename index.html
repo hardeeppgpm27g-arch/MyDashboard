@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardeep Singh Seehra — Portfolio</title>
+<meta name="description" content="Hardeep Singh Seehra — Assistant Manager, Technical Services Group, Voltas. Product management, inventory planning and solution consulting across HVAC systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0A1B29;
+    --navy-900:#0F2438;
+    --navy-800:#173349;
+    --navy-700:#20455F;
+    --blue-accent:#6FA8D8;
+    --copper:#C1793F;
+    --copper-light:#E3A46C;
+    --paper:#F3F0E7;
+    --paper-alt:#EAE6D8;
+    --line:#D9D3C2;
+    --line-dark:#2C4560;
+    --ink:#182430;
+    --ink-soft:#4B5A66;
+    --white:#FFFFFF;
+    --radius:2px;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  ::selection{background:var(--copper);color:var(--white);}
+  :focus-visible{outline:2px solid var(--copper);outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,27,41,0.0);
+    border-bottom:1px solid transparent;
+    transition:background .35s ease, border-color .35s ease;
+  }
+  .nav.scrolled{
+    background:rgba(10,27,41,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  @media (max-width:640px){ .nav-inner{padding:14px 20px;} }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px;
+    color:var(--white);
+  }
+  .brand-mark{
+    width:32px;height:32px; border:1.5px solid var(--copper-light);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--copper-light);
+    position:relative;
+  }
+  .nav-links{display:flex; gap:28px; align-items:center;}
+  .nav-links a{
+    font-size:14px; color:#C7D4DF; font-weight:500;
+    padding:6px 2px; border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .nav-links a:hover{color:var(--white); border-color:var(--copper-light);}
+  .nav-cta{
+    font-size:13px !important; color:var(--navy-950) !important;
+    background:var(--copper-light); padding:8px 14px !important;
+    border:none !important; font-weight:600;
+  }
+  .nav-cta:hover{background:var(--white) !important; color:var(--navy-950) !important;}
+  .nav-toggle{display:none; background:none;border:none; color:var(--white); font-size:22px; cursor:pointer;}
+  @media (max-width:860px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--navy-950); flex-direction:column; align-items:flex-start;
+      padding:18px 20px 22px; gap:16px; border-bottom:1px solid var(--line-dark);
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(10,27,41,0.15), rgba(10,27,41,0.85) 60%, var(--navy-950) 100%),
+      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(111,168,216,0.07) 32px),
+      repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(111,168,216,0.07) 32px),
+      var(--navy-950);
+    padding:150px 0 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px;
+    align-items:center;
+    padding-bottom:56px;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    color:var(--copper-light); letter-spacing:.02em;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--copper-light);display:inline-block;}
+  .hero h1{
+    font-size:clamp(38px,5.4vw,64px);
+    color:var(--white);
+    font-weight:700;
+  }
+  .hero-role{
+    margin-top:14px; font-size:clamp(16px,2vw,19px); color:var(--blue-accent);
+    font-weight:500;
+  }
+  .hero-tagline{
+    margin-top:22px; font-size:16.5px; line-height:1.65; color:#C7D4DF;
+    max-width:52ch;
+  }
+  .hero-actions{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px; font-size:14.5px; font-weight:600;
+    border:1px solid var(--copper-light); cursor:pointer;
+    transition:all .2s ease;
+  }
+  .btn-solid{background:var(--copper-light); color:var(--navy-950); border-color:var(--copper-light);}
+  .btn-solid:hover{background:var(--copper); border-color:var(--copper);}
+  .btn-outline{background:transparent; color:var(--white); border-color:#3A5A73;}
+  .btn-outline:hover{border-color:var(--copper-light); color:var(--copper-light);}
+
+  .hero-photo-wrap{position:relative; justify-self:center;}
+  .hero-photo{
+    width:min(360px,86vw); position:relative;
+  }
+  .hero-photo img{
+    width:100%; aspect-ratio:3/4; object-fit:cover;
+    filter:saturate(1.02) contrast(1.03);
+  }
+  .frame-corner{position:absolute; width:26px;height:26px; z-index:2;}
+  .frame-corner.tl{top:-10px;left:-10px; border-top:2px solid var(--copper-light); border-left:2px solid var(--copper-light);}
+  .frame-corner.br{bottom:-10px;right:-10px; border-bottom:2px solid var(--copper-light); border-right:2px solid var(--copper-light);}
+  .hero-photo-tag{
+    position:absolute; bottom:14px; left:14px;
+    background:rgba(10,27,41,0.82); color:var(--copper-light);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; padding:5px 9px;
+    border:1px solid rgba(227,164,108,0.4);
+  }
+
+  .stat-strip{
+    border-top:1px solid var(--line-dark);
+    background:var(--navy-900);
+  }
+  .stat-strip-inner{
+    max-width:var(--max); margin:0 auto; padding:0 32px;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(168px,1fr));
+  }
+  @media (max-width:640px){ .stat-strip-inner{padding:0 20px;} }
+  .stat{
+    padding:26px 22px; border-bottom:1px solid var(--line-dark); border-right:1px solid var(--line-dark);
+    position:relative;
+  }
+  .stat::before{
+    content:"";position:absolute; top:0; left:-1px; width:1px; height:8px; background:var(--copper-light);
+  }
+  .stat-num{font-family:'Space Grotesk',sans-serif; font-size:26px; font-weight:700; color:var(--white);}
+  .stat-label{margin-top:4px; font-size:12.5px; color:#9FB2C1; line-height:1.4;}
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:88px 0;}
+  @media (max-width:640px){ section{padding:62px 0;} }
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--copper);
+    display:flex; align-items:center; gap:10px; margin-bottom:12px;
+  }
+  .section-tag::before{content:"";width:22px;height:1px;background:var(--copper);display:inline-block;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); color:var(--ink);}
+  .section-sub{margin-top:14px; font-size:15.5px; line-height:1.65; color:var(--ink-soft);}
+
+  .divider{
+    height:1px; background:var(--line); position:relative; margin:0 32px;
+  }
+  .divider::before, .divider::after{
+    content:""; position:absolute; top:-3px; width:1px; height:7px; background:var(--copper);
+  }
+  .divider::before{left:0;} .divider::after{right:0;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper);}
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:56px;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-copy p{font-size:16px; line-height:1.75; color:var(--ink-soft);}
+  .about-copy p + p{margin-top:16px;}
+  .facts{border:1px solid var(--line); background:var(--white);}
+  .fact-row{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:14px 20px; border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .fact-row:last-child{border-bottom:none;}
+  .fact-label{color:var(--ink-soft);}
+  .fact-value{font-weight:600; text-align:right;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .experience{background:var(--paper-alt);}
+  .exp-layout{display:grid; grid-template-columns:1.5fr 1fr; gap:52px; align-items:start;}
+  @media (max-width:900px){ .exp-layout{grid-template-columns:1fr;} }
+  .exp-card{border-left:2px solid var(--copper); padding-left:26px;}
+  .exp-role{font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:600;}
+  .exp-meta{margin-top:6px; font-size:14px; color:var(--ink-soft);}
+  .exp-list{list-style:none; margin:24px 0 0; padding:0;}
+  .exp-list li{
+    position:relative; padding-left:22px; font-size:15px; line-height:1.68;
+    color:var(--ink-soft); margin-bottom:16px;
+  }
+  .exp-list li::before{
+    content:""; position:absolute; left:0; top:9px; width:9px; height:1.5px; background:var(--copper);
+  }
+  .exp-list li strong{color:var(--ink); font-weight:600;}
+  .exp-side-photo{border:1px solid var(--line); background:var(--white); padding:10px;}
+  .exp-side-photo img{width:100%; aspect-ratio:4/3; object-fit:cover;}
+  .exp-side-caption{padding:14px 4px 4px; font-size:13px; color:var(--ink-soft); line-height:1.55;}
+  .exp-side-caption b{color:var(--ink); font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:11.5px; letter-spacing:.02em; display:block; margin-bottom:6px; color:var(--copper);}
+
+  /* ---------- CAROUSEL ---------- */
+  .carousel{position:relative; background:#000; overflow:hidden; aspect-ratio:16/10;}
+  .carousel-track{position:relative; width:100%; height:100%;}
+  .slide{
+    position:absolute; inset:0; opacity:0; transition:opacity .7s ease;
+  }
+  .slide.active{opacity:1;}
+  .slide img{width:100%; height:100%; object-fit:cover;}
+  .slide-caption{
+    position:absolute; left:0; right:0; bottom:0;
+    background:linear-gradient(0deg, rgba(10,20,29,0.88), rgba(10,20,29,0));
+    padding:34px 22px 16px; color:#E7EDF2; font-size:13.5px; line-height:1.5;
+  }
+  .carousel-btn{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:38px; height:38px; background:rgba(10,20,29,0.55); border:1px solid rgba(255,255,255,0.25);
+    color:var(--white); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:16px; z-index:5; transition:background .2s ease;
+  }
+  .carousel-btn:hover{background:rgba(193,121,63,0.85);}
+  .carousel-prev{left:14px;} .carousel-next{right:14px;}
+  .carousel-dots{
+    position:absolute; bottom:12px; right:16px; display:flex; gap:7px; z-index:5;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; border:none; padding:0;}
+  .dot.active{background:var(--copper-light);}
+
+  /* ---------- SPOTLIGHT (ACREX) ---------- */
+  .spotlight{background:var(--navy-950); color:var(--white);}
+  .spotlight .section-tag{color:var(--copper-light);}
+  .spotlight .section-tag::before{background:var(--copper-light);}
+  .spotlight .section-head h2{color:var(--white);}
+  .spotlight .section-sub{color:#B7C6D2;}
+  .spotlight-grid{display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center;}
+  @media (max-width:900px){ .spotlight-grid{grid-template-columns:1fr;} }
+  .spotlight-copy .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
+  .badge{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--copper-light);
+    border:1px solid rgba(227,164,108,0.4); padding:6px 10px;
+  }
+
+  /* ---------- GALLERY (ZONE MEETS) ---------- */
+  .gallery{background:var(--paper);}
+  .gallery-cols{display:grid; grid-template-columns:1fr 1fr; gap:44px;}
+  @media (max-width:860px){ .gallery-cols{grid-template-columns:1fr;} }
+  .gallery-item h3{font-size:19px; font-weight:600;}
+  .gallery-item .zone-note{font-size:14px; color:var(--ink-soft); margin-top:8px; margin-bottom:16px; line-height:1.6;}
+  .zone-tag{
+    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+    color:var(--copper); border:1px solid var(--copper); padding:3px 8px; margin-bottom:12px;
+  }
+
+  /* ---------- AWARDS ---------- */
+  .awards{background:var(--navy-900); color:var(--white);}
+  .awards .section-tag{color:var(--copper-light);}
+  .awards .section-tag::before{background:var(--copper-light);}
+  .awards .section-head h2{color:var(--white);}
+  .awards .section-sub{color:#B7C6D2;}
+  .award-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  @media (max-width:860px){ .award-grid{grid-template-columns:1fr;} }
+  .award-card{
+    background:var(--navy-800); border:1px solid var(--line-dark);
+  }
+  .award-photo{aspect-ratio:16/10; overflow:hidden;}
+  .award-photo img{width:100%; height:100%; object-fit:cover;}
+  .award-body{padding:26px 26px 30px;}
+  .award-kicker{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--copper-light);
+    letter-spacing:.02em; margin-bottom:10px;
+  }
+  .award-title{font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:600;}
+  .award-body p.desc{margin-top:12px; font-size:14.5px; line-height:1.65; color:#C1CEDA;}
+  .award-people{
+    margin-top:16px; padding-top:16px; border-top:1px solid var(--line-dark);
+    font-size:13px; color:#93A6B6; line-height:1.7;
+  }
+  .award-people b{color:#E3EAF0; font-weight:600;}
+
+  /* ---------- PROJECTS ---------- */
+  .projects{background:var(--paper-alt);}
+  .project-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  @media (max-width:1040px){ .project-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:640px){ .project-grid{grid-template-columns:1fr;} }
+  .project-card{background:var(--white); border:1px solid var(--line); padding:28px 26px;}
+  .project-index{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--copper); margin-bottom:12px;}
+  .project-card h3{font-size:18px; font-weight:600; line-height:1.4;}
+  .project-card .period{font-size:12.5px; color:var(--ink-soft); margin-top:6px; font-family:'IBM Plex Mono',monospace;}
+  .project-card p.body-text{margin-top:14px; font-size:14.5px; line-height:1.65; color:var(--ink-soft);}
+
+  /* ---------- CAPABILITIES (skills/certs/positions) ---------- */
+  .capabilities{background:var(--paper);}
+  .cap-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:36px;}
+  @media (max-width:900px){ .cap-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:640px){ .cap-grid{grid-template-columns:1fr;} }
+  .cap-col h4{
+    font-size:14px; font-family:'IBM Plex Mono',monospace; font-weight:500;
+    color:var(--copper); margin-bottom:18px; letter-spacing:.01em;
+  }
+  .cap-list{list-style:none; margin:0; padding:0;}
+  .cap-list li{
+    font-size:14.5px; color:var(--ink-soft); padding:10px 0; border-bottom:1px solid var(--line);
+    line-height:1.5;
+  }
+  .cap-list li:first-child{padding-top:0;}
+  .cap-list li b{color:var(--ink); font-weight:600; display:block; font-size:14.5px;}
+  .cap-list li span.meta{font-size:12.5px; color:#8A97A1;}
+  .skill-pill-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .skill-pill{
+    font-size:13px; padding:8px 14px; border:1px solid var(--line); background:var(--white); color:var(--ink);
+    font-weight:500;
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .education{background:var(--paper-alt);}
+  table.edu-table{width:100%; border-collapse:collapse; background:var(--white); border:1px solid var(--line);}
+  table.edu-table th, table.edu-table td{
+    text-align:left; padding:14px 18px; font-size:14px; border-bottom:1px solid var(--line);
+  }
+  table.edu-table th{
+    font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12px; color:var(--ink-soft);
+    background:var(--paper-alt);
+  }
+  table.edu-table tr:last-child td{border-bottom:none;}
+  table.edu-table td.deg{font-weight:600;}
+  .lang-row{display:flex; gap:12px; margin-top:26px; flex-wrap:wrap;}
+  .lang-chip{
+    font-size:13px; padding:7px 13px; border:1px solid var(--copper); color:var(--copper);
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{background:var(--navy-950); color:var(--white);}
+  .contact-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:start;}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact h2{font-size:clamp(28px,4vw,42px); color:var(--white);}
+  .contact-copy{margin-top:18px; font-size:15.5px; line-height:1.7; color:#B7C6D2; max-width:48ch;}
+  .contact-actions{margin-top:30px; display:flex; gap:14px; flex-wrap:wrap;}
+  .contact-list{list-style:none; margin:0; padding:0;}
+  .contact-list li{
+    padding:16px 0; border-bottom:1px solid var(--line-dark);
+    display:flex; justify-content:space-between; gap:16px; font-size:14px;
+  }
+  .contact-list li:first-child{padding-top:0;}
+  .contact-list span.k{color:#93A6B6; font-family:'IBM Plex Mono',monospace; font-size:12.5px; flex-shrink:0;}
+  .contact-list span.v{font-weight:600; text-align:right; min-width:0; overflow-wrap:break-word;}
+  footer{
+    border-top:1px solid var(--line-dark); margin-top:60px; padding-top:26px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:12.5px; color:#7C8D9C;
+  }
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="brand-mark">HS</span> Hardeep Singh Seehra</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#acrex">ACREX</a>
+      <a href="#gallery">Field Highlights</a>
+      <a href="#awards">Awards</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Hardeep Singh<br>Seehra</h1>
+      <div class="hero-role">Business Management Professional</div>
+      <p class="hero-tagline">Operational-excellence driven management professional, adept at stakeholder management and vendor engagement — translating consumer needs into fuel for value chains, and building toward AI &amp; data-driven business experiences.</p>
+      <div class="hero-actions">
+        <a href="Hardeep_Singh_Seehra_Resume.pdf" class="btn btn-solid" download>Download résumé</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <span class="frame-corner tl"></span>
+        <span class="frame-corner br"></span>
+        <img src="images/profile.jpg" alt="Hardeep Singh Seehra">
+        <span class="hero-photo-tag mono">Great Lakes · Gurgaon</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-strip-inner">
+      <div class="stat"><div class="stat-num">290+</div><div class="stat-label">Products managed across 3 segments</div></div>
+      <div class="stat"><div class="stat-num">₹800+ Cr</div><div class="stat-label">Portfolio value under management</div></div>
+      <div class="stat"><div class="stat-num">17%</div><div class="stat-label">Consistent portfolio CAGR</div></div>
+      <div class="stat"><div class="stat-num">34 mo.</div><div class="stat-label">Professional experience to date</div></div>
+      <div class="stat"><div class="stat-num">₹6+ Cr</div><div class="stat-label">Inventory Management Highlight — spare inventory planned, near-zero critical stock-outs</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <div class="about-copy">
+        <div class="section-tag">Profile</div>
+        <h2 style="margin-bottom:22px;">Turning ground-level product realities into board-ready decisions</h2>
+        <p>Hardeep is an operational-excellence-driven management professional with 34 months of experience, having most recently served as an Assistant Manager at Voltas. A major focus of his career has been product management and inventory management: he successfully planned over ₹6 Crore worth of spare inventory for domestic and overseas clients, using consumption-trend and failure-rate analysis to ensure "near-0" critical stock-outs. This built on his earlier project with Indian Railways, where he developed an inventory-tracking app for store managers to optimize control and prevent stock-outs. At Voltas, he also led OEM coordination — actively engaging with vendors and suppliers on product validation, spare audits, quality assurance, and warranty claims.</p>
+        <p>His commitment to innovation and excellence was formally recognized in August 2025, when he was honoured with the "High-5" award by the Business Head for developing a product-solutions portal that can be flexibly accessed, cutting the pitch cycle down to minutes from 48 hours. He also had the opportunity to represent the entire product portfolio on a major industry stage at ACREX by ISHRAE, South Asia's premier HVAC expo, held in Mumbai in March 2026.</p>
+      </div>
+      <div class="facts">
+        <div class="fact-row"><span class="fact-label">Previous Role</span><span class="fact-value">Assistant Manager, Voltas</span></div>
+        <div class="fact-row"><span class="fact-label">Currently Pursuing</span><span class="fact-value">PGCM, Great Lakes Gurgaon</span></div>
+        <div class="fact-row"><span class="fact-label">Undergraduate</span><span class="fact-value">B.E. Mechanical, 8.8 CGPA</span></div>
+        <div class="fact-row"><span class="fact-label">Experience</span><span class="fact-value">34 months</span></div>
+        <div class="fact-row"><span class="fact-label">Languages</span><span class="fact-value">EN · HI · MR · PA</span></div>
+        <div class="fact-row"><span class="fact-label">Based in</span><span class="fact-value">Mumbai, India</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="experience" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">Professional experience</div>
+      <h2>Assistant Manager, Technical Services Group</h2>
+      <p class="section-sub">Voltas · Jul 2023 – May 2026</p>
+    </div>
+
+    <div class="exp-layout reveal">
+      <div class="exp-card">
+        <ul class="exp-list">
+          <li><strong>Managed the product life cycle of 290+ products</strong> across 3 segments using the GTM Readiness procedure, ensuring smooth commercialization of a portfolio valued at ₹800+ Cr with a consistent CAGR of 17%.</li>
+          <li><strong>Planned ₹6+ Crores of spare inventory</strong> for domestic and overseas markets using consumption-trend and failure-rate analysis, keeping critical stock-outs near zero and protecting brand reliability.</li>
+          <li><strong>Engaged vendors and OEM suppliers</strong> on behalf of Voltas across product validation, spare audits, quality assurance, warranty claims and product improvements.</li>
+          <li><strong>Influenced tender-bid win rates above 40%</strong> — summing to ₹9.5+ Crores — by building and applying competitive intelligence.</li>
+          <li><strong>Launched 4 product catalogues, 2 promotional videos and 6 pitch kits</strong>, and ideated and developed a self-service portal for flexible access to solutions, cutting the pitch cycle down to minutes.</li>
+          <li><strong>Led on-field product prototype testing &amp; validation</strong> as Team Lead (Sep 2024 – May 2026), taking the product out of the workshop and onto live sites to see how it actually performs.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="exp-side-photo">
+          <img src="images/field-validation.jpg" alt="On-field site visit for product prototype validation">
+        </div>
+        <div class="exp-side-caption">
+          <b>On the ground</b>
+          One of the responsibilities was to maintain healthy relationships with B2B clients by representing Voltas' technical &amp; project management capabilities with utmost transparency, building trust in the brand and keeping stakeholders engaged and updated about their valuable projects.
+          <span style="display:block;margin-top:10px;font-size:12px;color:var(--ink-soft);">Pictured: an on-site visit with Dr. Niranjan Hiranandani.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACREX SPOTLIGHT ================= -->
+<section class="spotlight" id="acrex">
+  <div class="wrap">
+    <div class="spotlight-grid reveal">
+      <div class="spotlight-copy">
+        <div class="section-tag">On the show floor</div>
+        <h2>ACREX India 2026 — the full portfolio, one booth</h2>
+        <p class="section-sub">At ACREX by ISHRAE — South Asia's premier HVAC expo — Hardeep represented Voltas' complete product portfolio on the show floor: all three product segments he has worked on, presented to visitors, channel partners and global OEM delegations across the 25th edition of the expo in Mumbai, March 2026.</p>
+        <div class="badge-row">
+          <span class="badge">Mumbai · Mar 2026</span>
+          <span class="badge">25th edition</span>
+          <span class="badge">3 product segments represented</span>
+        </div>
+      </div>
+      <div class="carousel" id="carousel-acrex">
+        <div class="carousel-track">
+          <div class="slide active">
+            <img src="images/acrex-2.jpg" alt="Presenting the product line to visiting delegates">
+            <div class="slide-caption">Walking a visiting delegation through the Voltas product line at the display wall.</div>
+          </div>
+          <div class="slide">
+            <img src="images/acrex-3.jpg" alt="Presenting a chiller unit on the show floor">
+            <div class="slide-caption">Presenting the oil-free chiller system on the show floor.</div>
+          </div>
+          <div class="slide">
+            <img src="images/acrex-1.jpg" alt="The Voltas pavilion at ACREX India 2026">
+            <div class="slide-caption">The Voltas pavilion at ACREX India 2026, 25th edition — Mumbai.</div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">&#8249;</button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">&#8250;</button>
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY: ZONE MEETS ================= -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">Field highlights</div>
+      <h2>Annual channel partner meets</h2>
+      <p class="section-sub">Regional touchpoints with the channel partner community — presenting the VRF portfolio, running technical sessions and standing shoulder to shoulder with the partners who take the product to market.</p>
+    </div>
+
+    <div class="gallery-cols reveal">
+      <div class="gallery-item">
+        <span class="zone-tag">EZ · East Zone</span>
+        <h3>East Zone Annual Channel Partner Meet</h3>
+        <p class="zone-note">Presenting to the East Zone channel partner community — one of the widest &amp; most reliable product ranges in the VRF segment in India.</p>
+        <div class="carousel" id="carousel-ez">
+          <div class="carousel-track">
+            <div class="slide active">
+              <img src="images/ez-1.jpg" alt="Backstage run-through before the East Zone session">
+              <div class="slide-caption">Final run-through backstage before taking the stage.</div>
+            </div>
+            <div class="slide">
+              <img src="images/ez-2.jpg" alt="Addressing East Zone channel partners">
+              <div class="slide-caption">Addressing East Zone channel partners on the VRF portfolio.</div>
+            </div>
+            <div class="slide">
+              <img src="images/ez-3.jpg" alt="With the East Zone channel partner community">
+              <div class="slide-caption">All channel partners contributing to the business — the East Zone community that carries this portfolio to market.</div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="Previous slide">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="Next slide">&#8250;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <span class="zone-tag">SZ · South Zone</span>
+        <h3>South Zone Annual Channel Partner Meet</h3>
+        <p class="zone-note">Presenting "VOLTAS VRF System — Designed for Superior Performance" at Voltaspire, alongside the South Zone leadership and channel partner community.</p>
+        <div class="carousel" id="carousel-sz">
+          <div class="carousel-track">
+            <div class="slide active">
+              <img src="images/sz-1.jpg" alt="Presenting the Voltas VRF System at Voltaspire">
+              <div class="slide-caption">Presenting "VOLTAS VRF System — Designed for Superior Performance" at Voltaspire.</div>
+            </div>
+            <div class="slide">
+              <img src="images/sz-3.jpg" alt="On stage with the South Zone leadership team">
+              <div class="slide-caption">On stage with the South Zone leadership team at Voltaspire.</div>
+            </div>
+            <div class="slide">
+              <img src="images/sz-2.jpg" alt="With the South Zone channel partner community">
+              <div class="slide-caption">With the full South Zone channel partner community at Voltaspire.</div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="Previous slide">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="Next slide">&#8250;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AWARDS ================= -->
+<section class="awards" id="awards">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">Awards &amp; recognition</div>
+      <h2>Marked out for innovation and initiative</h2>
+    </div>
+
+    <div class="award-grid reveal">
+      <div class="award-card">
+        <div class="award-photo"><img src="images/hackathon.jpg" alt="AI Hackathon award ceremony"></div>
+        <div class="award-body">
+          <div class="award-kicker">Extra-curricular · May 2026</div>
+          <div class="award-title">3rd Runner-Up, AI Hackathon</div>
+          <p class="desc">Developed a networking app for college students, Gurgaon, earning 3rd runner-up honours at the AI Hackathon.</p>
+          <div class="award-people">Award presented by <b>Ashish Ranjeet Singh</b>, Manager – Strategy &amp; Analytics, Deloitte, and <b>Sandeep Sethi</b>, MD, Deloitte Consulting India.</div>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-photo"><img src="images/high5.jpg" alt="High-5 award handover"></div>
+        <div class="award-body">
+          <div class="award-kicker">Voltas · Aug 2025</div>
+          <div class="award-title">High-5 Award</div>
+          <p class="desc">Awarded by the Business Head, Commercial Air Conditioning, Voltas, in recognition of innovation and excellence.</p>
+          <div class="award-people">One of the youngest management employees — having started as a GET (Graduate Engineer Trainee) — to receive this recognition, for ideating and developing an online portal for the sales &amp; service vertical that makes the product library and updates accessible from anywhere, anytime.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">Academic projects</div>
+      <h2>Where the classroom met the shop floor</h2>
+    </div>
+    <div class="project-grid reveal">
+      <div class="project-card">
+        <div class="project-index">01</div>
+        <h3>Development of an Inventory Optimization Framework for a Chassis Manufacturing Plant — Ashok Leyland</h3>
+        <div class="period">Ongoing</div>
+        <p class="body-text">Undertaking an inventory optimization study across raw material, BOC, WIP and finished chassis inventory for a 25,000-unit/year build plan, to safeguard production continuity and reduce costs. Applying ABC-VED-FSN classification, EOQ and OEM benchmarking to assess excess stock and VMI/Kanban/JIT feasibility — aiming to reduce inventory carrying cost and working capital, with improved line-feed reliability.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-index">02</div>
+        <h3>Analyzing the effect of pricing on demand &amp; consumer behavior in simulated market conditions</h3>
+        <div class="period">Jun – Jul 2026</div>
+        <p class="body-text">Experimented with product pricing using demand analysis and primary research. Derived price elasticity and demand forecasts to scale profits by 13% while maintaining an overall profit margin of 18%.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-index">03</div>
+        <h3>Optimizing inventory control in a maintenance workshop at Indian Railways</h3>
+        <div class="period">Jul 2022 – Feb 2023</div>
+        <p class="body-text">Developed an app for store managers to track inventory consumption, enabling pre-planned stocking to avoid stock-outs, and used AutoCAD to reduce material used in fabrications by up to 20%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section class="capabilities">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">Capabilities</div>
+      <h2>Skills, certifications &amp; responsibilities</h2>
+    </div>
+    <div class="cap-grid reveal">
+      <div class="cap-col">
+        <h4>Key skills</h4>
+        <div class="skill-pill-list">
+          <span class="skill-pill">Product Management</span>
+          <span class="skill-pill">Inventory Planning</span>
+          <span class="skill-pill">Quality Improvement</span>
+          <span class="skill-pill">Competitive Intelligence</span>
+          <span class="skill-pill">Solution Consulting</span>
+        </div>
+      </div>
+      <div class="cap-col">
+        <h4>Certificates</h4>
+        <ul class="cap-list">
+          <li><b>Excel</b><span class="meta">Great Learning · 2026 · 1 week</span></li>
+          <li><b>AutoCAD</b><span class="meta">IIT Kanpur · 2022 · 4 weeks</span></li>
+          <li><b>Business Communication</b><span class="meta">TCS · 2020 · 1 week</span></li>
+        </ul>
+      </div>
+      <div class="cap-col">
+        <h4>Positions of responsibility</h4>
+        <ul class="cap-list">
+          <li><b>Member, Placement Committee (Outreach)</b><span class="meta">Great Lakes Institute of Management, Gurgaon · 2026</span></li>
+          <li><b>Team Lead, On-field prototype testing &amp; validation</b><span class="meta">Voltas · Sep 2024 – May 2026</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section class="education" id="education">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">Qualifications</div>
+      <h2>Education</h2>
+    </div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="edu-table">
+        <thead>
+          <tr><th>Degree</th><th>Institute / University, City</th><th>%/CGPA</th><th>Year</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="deg">PGCM</td><td>Great Lakes Institute of Management, Gurgaon</td><td>Pursuing</td><td>2027</td></tr>
+          <tr><td class="deg">B.E. Mechanical</td><td>Lokmanya Tilak College of Engineering, Mumbai</td><td>8.8 / 10.0</td><td>2023</td></tr>
+          <tr><td class="deg">12th</td><td>Saket College of Arts, Science &amp; Commerce, Mumbai</td><td>67.8%</td><td>2019</td></tr>
+          <tr><td class="deg">10th</td><td>Guru Nanak English High School &amp; Jr. College, Mumbai</td><td>88.0%</td><td>2017</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="lang-row reveal">
+      <span class="lang-chip">English</span>
+      <span class="lang-chip">Hindi</span>
+      <span class="lang-chip">Marathi</span>
+      <span class="lang-chip">Punjabi</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid reveal">
+      <div>
+        <div class="section-tag" style="color:var(--copper-light);">Get in touch</div>
+        <h2>Let's talk product, operations, or the next role.</h2>
+        <p class="contact-copy">Open to conversations around inventory management, product management, consulting and operations roles. Reach out at <a href="mailto:hardeep.pgpm27g@greatlakes.edu.in" style="color:var(--copper-light); text-decoration:underline;">hardeep.pgpm27g@greatlakes.edu.in</a>, or connect on <a href="https://www.linkedin.com/in/hardeepsinghseehra" target="_blank" rel="noopener" style="color:var(--copper-light); text-decoration:underline;">LinkedIn</a>.</p>
+        <div class="contact-actions">
+          <a href="mailto:hardeep.pgpm27g@greatlakes.edu.in" class="btn btn-solid">Email Hardeep</a>
+          <a href="https://www.linkedin.com/in/hardeepsinghseehra" target="_blank" rel="noopener" class="btn btn-outline">Connect on LinkedIn</a>
+          <a href="Hardeep_Singh_Seehra_Resume.pdf" class="btn btn-outline" download>Download résumé (PDF)</a>
+        </div>
+      </div>
+      <div>
+        <ul class="contact-list">
+          <li><span class="k">LOCATION</span><span class="v">Mumbai, India</span></li>
+          <li><span class="k">EDUCATION</span><span class="v">PGCM, Great Lakes · Batch 2026–27</span></li>
+          <li><span class="k">PREVIOUS ROLE</span><span class="v">Assistant Manager, Voltas</span></li>
+          <li><span class="k">EMAIL</span><span class="v"><a href="mailto:hardeep.pgpm27g@greatlakes.edu.in" style="color:inherit;">hardeep.pgpm27g@greatlakes.edu.in</a></span></li>
+          <li><span class="k">LINKEDIN</span><span class="v"><a href="https://www.linkedin.com/in/hardeepsinghseehra" target="_blank" rel="noopener" style="color:inherit;">/in/hardeepsinghseehra</a></span></li>
+          <li><span class="k">LOOKING FOR</span><span class="v">Supply Chain, Product Management, Consulting, Operations</span></li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <span>&copy; 2026 Hardeep Singh Seehra</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+  // Nav scroll state + mobile toggle
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Carousel component
+  function initCarousel(root, interval) {
+    const slides = root.querySelectorAll('.slide');
+    const dotsWrap = root.querySelector('.carousel-dots');
+    let current = 0;
+    let timer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => go(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = dotsWrap.querySelectorAll('.dot');
+
+    function go(i) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    function next() { go(current + 1); }
+    function prev() { go(current - 1); }
+
+    root.querySelector('.carousel-next').addEventListener('click', () => { next(); restart(); });
+    root.querySelector('.carousel-prev').addEventListener('click', () => { prev(); restart(); });
+
+    function start() { timer = setInterval(next, interval); }
+    function restart() { clearInterval(timer); start(); }
+
+    root.addEventListener('mouseenter', () => clearInterval(timer));
+    root.addEventListener('mouseleave', start);
+
+    start();
+  }
+
+  document.querySelectorAll('.carousel').forEach((el, i) => initCarousel(el, 4200 + i * 300));
+</script>
+
+</body>
+</html>
